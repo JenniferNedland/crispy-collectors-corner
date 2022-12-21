@@ -1,23 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Header, Page } from "./view/Header";
+import { Home } from "./view/Home";
+import { MyLists } from './view/MyLists';
+
+const pages: {[Property in Page]: JSX.Element} = {
+  HOME: <Home />,
+  MY_LISTS: <MyLists />,
+  //create faves which will eventually lead to friends possibly? 
+  FAVES: <div />
+}
 
 function App() {
+const [currentPage, setCurrentPage] = useState<Page>("HOME");
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Header setCurrentPage={setCurrentPage} />
+        {pages[currentPage]}
+        
       </header>
     </div>
   );
