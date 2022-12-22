@@ -1,2 +1,2 @@
 # crispy-collectors-corner
-A Reactier version of Collectors Corner 
+My practice version of Collectors Corner
