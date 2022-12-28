@@ -3,12 +3,14 @@ package org.launchcode.crispy.controller;
 import java.util.List;
 
 import org.launchcode.crispy.model.Collection;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ListController {
   @GetMapping("/public/lists")
+  @CrossOrigin(origins = "http://localhost:3000")
   public List<Collection> listPublicCollection() {
     return List.of(
       new Collection(
@@ -19,7 +21,7 @@ public class ListController {
       new Collection(
         "World's Greatest Shark Movies or Something. Yeah.",
         "movies",
-        List.of("jaws", "5-headed-shark-attack", "sharknado", "sharkboy-and-lavagirl", "sharktopus", "mega-shark-vs-giant-octopus",)
+        List.of("jaws", "5-headed-shark-attack", "sharknado", "sharkboy-and-lavagirl", "sharktopus", "mega-shark-vs-giant-octopus")
       )
     );
   }
