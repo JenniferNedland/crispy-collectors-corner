@@ -4,24 +4,21 @@ import { List } from "../model/List";
 import { ListView } from "./ListView";
 
 export function Home() {
-    const [publicLists, setPublicLists] = useState<List[]>();
+  const [publicLists, setPublicLists] = useState<List[]>();
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/public/lists`)
-         .then((response) => response.json())
-         .then(json => setPublicLists(json))
-       }, []);
+  useEffect(() => {
+    fetch(`http://localhost:8080/public/lists`)
+      .then((response) => response.json())
+      .then((json) => setPublicLists(json));
+  }, []);
 
-       if(!publicLists) {
-        return <>Loading</>;
-       }
-    return (
-        <>
-        Welcome to the home page
-
-        <ListView title="Public Lists" lists={publicLists}/>
-
-        </>
-    );
+  if (!publicLists) {
+    return <>Loading</>;
+  }
+  return (
+    <>
+      Welcome to the home page
+      <ListView title="Public Lists" lists={publicLists} />
+    </>
+  );
 }
-
