@@ -2,7 +2,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 import { useState } from 'react';
 
-export type Page = "HOME" | "MY_LISTS" | "FAVES";
+export type Page = "HOME" | "MY_LISTS" | "FAVES" | "CREATE";
 
 type UserObject = {
     email: string;
@@ -41,6 +41,7 @@ export function Header({ setCurrentPage }: HeaderProps) {
             <button onClick={() => setCurrentPage("HOME")}>Home</button>
             <button onClick={() => setCurrentPage("MY_LISTS")}>My Lists</button>
             <button onClick={() => setCurrentPage("FAVES")}>Faves</button>
+            <button onClick={() => setCurrentPage("CREATE")}>Create</button>
         </div>
         </>
 
