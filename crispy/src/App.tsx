@@ -20,9 +20,13 @@ const [currentPage, setCurrentPage] = useState<Page>("HOME");
     <div className="App">
       <header className="App-header">
         <Header setCurrentPage={setCurrentPage} />
-        {pages[currentPage]}
+        
         
       </header>
+
+      <body>{pages[currentPage]}</body>
+      
+
     </div>
   );
 }
