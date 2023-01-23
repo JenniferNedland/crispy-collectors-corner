@@ -23,17 +23,41 @@ export function Create() {
     setSearchTerm('');
   }
 
+  const removeMovie = (index: number) => {
+    setMovies([...movies.slice(0, index), ...movies.slice(index + 1)]);
+  }
+
+  const save = () => {
+    const requestInit = {
+      method: "POST",
+      headers: { 'Content-Type': "application/json" },
+      body: JSON.stringify({
+        collectionTitle: title,
+        type: "movies",
+        movieIds: movies.map(m => m.id),
+      })
+    };
+    fetch('http://localhost:8080/user/lists', requestInit)
+      .then((response) => {
+        if (response.ok) {
+          setTitle('');
+          setMovies([]);
+        }
+      })
+  }
+
   return (
     <>
     Just regular text on the create page
     <div>
-      Title: <input onChange={e => setTitle(e.target.value)}/>
+      Title: <input value={title} onChange={e => setTitle(e.target.value)}/>
     </div>
     <div>
       Add movie: <input value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
     </div>
     <ul>{searchResults.map(movie => <li><button onClick={() => addMovie(movie)}>{movie.title}</button></li>)}</ul>
-    <ul>{movies.map(movie => <li>{movie.title}</li>)}</ul>
+    <ul>{movies.map((movie, index) => <li>{movie.title} <button onClick={() => removeMovie(index)}>x</button></li>)}</ul>
+    <button onClick={save}>Save</button>
     </>
   )
  

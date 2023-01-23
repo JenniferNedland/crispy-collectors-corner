@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { List } from "../model/List";
+import { Collection } from "../model/Collection";
 import { ListView } from "./ListView";
 
 export function Home() {
-  const [publicLists, setPublicLists] = useState<List[]>();
+  const [publicLists, setPublicLists] = useState<Collection[]>();
 
   useEffect(() => {
     fetch(`http://localhost:8080/public/lists`)

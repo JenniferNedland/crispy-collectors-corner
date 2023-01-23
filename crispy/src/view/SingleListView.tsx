@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { promises } from "stream";
-import { List } from "../model/List";
+import { Collection } from "../model/Collection";
 import { Movie } from "../model/Movie";
 
-type SingleListViewProps = List;
+type SingleListViewProps = Collection;
 
-export function SingleListView ({ name, type, content }: SingleListViewProps) {
+export function SingleListView ({ collectionTitle: name, type, movieIds: content }: SingleListViewProps) {
     const [movies, setMovies] = useState<(Movie | undefined)[]>();
 
     useEffect(() => {
