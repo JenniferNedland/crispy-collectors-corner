@@ -1,9 +1,9 @@
-import { List } from "../model/List";
+import { Collection } from "../model/Collection";
 import { SingleListView } from "./SingleListView";
 
 type ListViewProps = {
     title: string;
-    lists: List[];
+    lists: Collection[];
 };
 
 export function ListView ({ title, lists }: ListViewProps) {

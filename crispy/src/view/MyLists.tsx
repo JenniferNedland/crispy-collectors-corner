@@ -1,18 +1,18 @@
-import { List } from "../model/List";
+import { Collection } from "../model/Collection";
 import { ListView } from "./ListView";
 
 // TODO: Don't hardcode My Lists
-const myLists: List[] = [
+const myLists: Collection[] = [
     {
-        name: "Mystical Moon Movies",
+        collectionTitle: "Mystical Moon Movies",
         type: "movies",
-        content: ["moon", "laser-moon", "moonfall"],
+        movieIds: ["moon", "laser-moon", "moonfall"],
     },
 
     {
-        name: "World's Greatest Octopi Movies or Something. Yeah.",
+        collectionTitle: "World's Greatest Octopi Movies or Something. Yeah.",
         type: "movies",
-        content: ["mega-shark-vs-giant-octopus", "sharktopus", "octopussy"],
+        movieIds: ["mega-shark-vs-giant-octopus", "sharktopus", "octopussy"],
     },
 ]
 
