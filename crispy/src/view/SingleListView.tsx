@@ -5,7 +5,7 @@ import { Movie } from "../model/Movie";
 
 type SingleListViewProps = Collection;
 
-export function SingleListView ({ collectionTitle: name, type, movieIds: content }: SingleListViewProps) {
+export function SingleListView ({ collectionTitle: name, movieIds: content }: SingleListViewProps) {
     const [movies, setMovies] = useState<(Movie | undefined)[]>();
 
     useEffect(() => {
