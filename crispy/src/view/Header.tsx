@@ -29,7 +29,6 @@ export function Header({ setCurrentPage }: HeaderProps) {
               const userObject = jwt_decode(response.credential) as UserObject;
               setUserObject(userObject);
               localStorage.setItem("credential", response.credential);
-              fetch(`http://localhost:8080/login?idtoken=${response.credential}`, { method: "POST"});
           }
 
         }}
