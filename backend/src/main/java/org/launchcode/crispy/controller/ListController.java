@@ -39,7 +39,8 @@ public class ListController {
       "system",
       new Collection(
         "Kickass Laser Movies",
-        List.of("89384", "701071", "377315", "35632")
+        List.of("89384", "701071", "377315", "35632"),
+        false
       )
     )
   ));  // TODO: remove hardcoded objects when we have a persistent database
@@ -55,7 +56,10 @@ public class ListController {
   // Return a list of public collections to the frontend.
   @GetMapping("/public/lists")
   public List<Collection> listPublicCollection() {
-    return collectionList.stream().map(c -> c.collection()).toList();
+    return collectionList.stream()
+    .map(c -> c.collection())
+    .filter(c -> !c.isPrivate())
+    .toList();
   }
 
   // Return a list of the currently logged in user's collections to the frontend.
