@@ -6,6 +6,7 @@ export function Create() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [isPrivate, setIsPrivate] = useState(false);
 
   useEffect(() => {
     if (!searchTerm) {
@@ -36,8 +37,8 @@ export function Create() {
       },
       body: JSON.stringify({
         collectionTitle: title,
-        type: "movies",
         movieIds: movies.map(m => m.id),
+        isPrivate,
       })
     };
     fetch('http://localhost:8080/user/lists', requestInit)
@@ -60,6 +61,11 @@ export function Create() {
     </div>
     <ul>{searchResults.map(movie => <li><button onClick={() => addMovie(movie)}>{movie.title}</button></li>)}</ul>
     <ul>{movies.map((movie, index) => <li>{movie.title} <button onClick={() => removeMovie(index)}>x</button></li>)}</ul>
+
+    <div>
+    Private: <input type="checkbox" checked={isPrivate} onChange={e => setIsPrivate(e.target.checked)}/>
+    </div>
+
     <button onClick={save}>Save</button>
     </>
   )
